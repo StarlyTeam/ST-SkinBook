@@ -1,0 +1,251 @@
+# 메세지 접두사
+prefix: "&l&8[&r&a스킨북&l&8] &r"
+
+# 메세지
+messages:
+
+  # 퍼미션이 없는 경우
+  noPermissions: "&c당신은 해당 명령어를 사용할 권한이 없습니다."
+
+  # 잘못 된 명령어인 경우
+  wrongCommand: "&c잘못된 명령어입니다."
+
+
+  # /스킨북
+  root: "&7도움말을 참고해주세요! &8: &6/스킨북 도움말"
+
+  # /스킨북 도움말
+  help:
+    - "&7--------- &l&8< &r&a스킨북 &6도움말 &l&8> &r&7---------"
+    - "&6/스킨북 도움말 &7: &f스킨북 명령어 도움말을 봅니다."
+    - "&6/스킨북 생성 <커스텀모델데이터> &7: &f스킨북을 생성합니다."
+    - "&7-------------------------------"
+
+  # /스킨북 리로드
+  reloaded: "&a콘피그를 성공적으로 리로드하였습니다."
+
+  # /스킨북 생성 <커스텀모델데이터>
+  create:
+
+    # 손에 든 아이템이 없을 때
+    noItemInHand: "&c손에 아이템을 들고 사용해주세요."
+
+    # 커스텀모델데이터가 숫자가 아닐 때
+    invalidCustomModelData: "&c커스텀모델데이터는 숫자여야 합니다."
+
+    # 인벤토리에 공간이 없을 때
+    noSpaceInInventory: "&c인벤토리에 공간이 없습니다."
+
+    # 스킨북 생성에 성공했을 때
+    # {material} : 아이템의 타입
+    # {customModelData} : 커스텀모델데이터
+    success: "&a스킨북을 생성하였습니다. &8(&7{material} &8: &7{customModelData}&8)"
+
+  # 스킨북 우클릭 : 적용 메뉴
+  menu:
+
+    # 스킨북을 적용할 아이템을 넣지 않았을 때
+    noItem: "&c스킨북을 적용할 아이템을 넣어주세요."
+
+    # 스킨북 타입과 적용하려는 아이템 타입이 다를 때
+    # {material} : 스킨북 타입
+    # {targetMaterial} : 적용하려는 아이템 타입
+    wrongMaterial: "&c스킨북 타입과 적용하려는 아이템 타입이 다릅니다. &8(&7{material} &8: &7{targetMaterial}&8)"
+
+    # 스킨북 적용에 성공했을 때
+    success: "&a스킨북을 적용하였습니다."
+
+# 스킨북 설정
+skinBook:
+  material: "WRITTEN_BOOK"
+  amount: 1
+  durability: 0
+  meta:
+    displayName: "&a스킨북"
+    lores:
+      - "&8[ &l&eST-SkinBook &r&8]"
+      - ""
+      - "&7스킨북을 우클릭하면 스킨을 적용할 수 있습니다."
+      - ""
+      - "&7스킨북 타입 : &6{material}"
+      - "&7커스텀모델데이터 : &6{customModelData}"
+      - ""
+
+# 메뉴 GUI 설정
+menu:
+
+  # 인벤토리 설정
+  inv:
+    title: "§8[ §eST-SkinBook §l§8| §r§a스킨북 적용 §8]"
+    size: 27
+    items:
+      '0':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '1':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '2':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '3':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '4':
+        material: "WRITTEN_BOOK"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r&6스킨북 적용 메뉴"
+          lores:
+            - "&r&a스킨북&f을 적용할 아이템을 아래에 놓아주세요."
+      '5':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '6':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '7':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '8':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '9':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '10':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '11':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '12':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '14':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '15':
+        material: "IRON_PICKAXE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r&a스킨북 &6즉시 적용"
+          lores:
+              - "&r&7스킨북을 즉시 적용합니다."
+      '16':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '17':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '18':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '19':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '20':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '21':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '22':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '23':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '24':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+      '25':
+          material: "BLACK_STAINED_GLASS_PANE"
+          amount: 1
+          durability: 0
+          meta:
+            displayName: "&r"
+      '26':
+        material: "BLACK_STAINED_GLASS_PANE"
+        amount: 1
+        durability: 0
+        meta:
+          displayName: "&r"
+
+
+  # 버튼 슬롯 설정
+  slots:
+
+    # 적용할 아이템을 놓는 슬롯
+    item: 13
+
+    # 적용 버튼을 놓는 슬롯
+    execute: 15
