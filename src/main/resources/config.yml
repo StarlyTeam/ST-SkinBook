@@ -5,7 +5,7 @@ prefix: "&l&8[&r&a스킨북&l&8] &r"
 messages:
 
   # 퍼미션이 없는 경우
-  noPermissions: "&c당신은 해당 명령어를 사용할 권한이 없습니다."
+  noPermission: "&c당신은 해당 명령어를 사용할 권한이 없습니다."
 
   # 잘못 된 명령어인 경우
   wrongCommand: "&c잘못된 명령어입니다."
@@ -51,6 +51,9 @@ messages:
     # {material} : 스킨북 타입
     # {targetMaterial} : 적용하려는 아이템 타입
     wrongMaterial: "&c스킨북 타입과 적용하려는 아이템 타입이 다릅니다. &8(&7{material} &8: &7{targetMaterial}&8)"
+
+    # 아이템 스택이 1개가 아닐 때
+    wrongAmount: "&c아이템 스택은 1개여야 합니다."
 
     # 스킨북 적용에 성공했을 때
     success: "&a스킨북을 적용하였습니다."
@@ -239,7 +242,6 @@ menu:
         durability: 0
         meta:
           displayName: "&r"
-
 
   # 버튼 슬롯 설정
   slots:

@@ -35,7 +35,6 @@ public class PlayerInteractListener implements Listener {
         new SkinBookMenu(material, customModelData).openInventory(player);
         skinBookOpenMap.put(player ,new Tuple<>(material, customModelData));
 
-        player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
         player.playSound(player.getLocation(), "minecraft:item.book.page_turn", 1, 1);
     }
 }

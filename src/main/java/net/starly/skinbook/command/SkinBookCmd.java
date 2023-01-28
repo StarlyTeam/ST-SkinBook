@@ -36,7 +36,7 @@ public class SkinBookCmd implements CommandExecutor {
             case "help":
             case "?": {
                 if (!player.hasPermission("starly.skinbook.help")) {
-                    player.sendMessage(config.getMessage("messages.noPermissions"));
+                    player.sendMessage(config.getMessage("messages.noPermission"));
                     return true;
                 }
 
@@ -52,7 +52,7 @@ public class SkinBookCmd implements CommandExecutor {
             case "생성":
             case "create": {
                 if (!player.hasPermission("starly.skinbook.create")) {
-                    player.sendMessage(config.getMessage("messages.noPermissions"));
+                    player.sendMessage(config.getMessage("messages.noPermission"));
                     return true;
                 }
 
@@ -117,9 +117,7 @@ public class SkinBookCmd implements CommandExecutor {
                     return true;
                 }
 
-                ItemStack mainHandItem = player.getInventory().getItemInMainHand();
-                player.getInventory().setItemInMainHand(skinBook);
-                player.getInventory().addItem(mainHandItem);
+                player.getInventory().addItem(skinBook);
 
 
                 // SEND MESSAGE
@@ -132,7 +130,7 @@ public class SkinBookCmd implements CommandExecutor {
             case "리로드":
             case "reload": {
                 if (!player.hasPermission("starly.skinbook.reload")) {
-                    player.sendMessage(config.getMessage("messages.noPermissions"));
+                    player.sendMessage(config.getMessage("messages.noPermission"));
                     return true;
                 }
 

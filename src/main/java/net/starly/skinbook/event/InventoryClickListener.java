@@ -1,13 +1,16 @@
 package net.starly.skinbook.event;
 
 import net.starly.core.data.util.Tuple;
+import net.starly.skinbook.SkinBookMain;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import static net.starly.skinbook.SkinBookMain.config;
 import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
@@ -19,6 +22,19 @@ public class InventoryClickListener implements Listener {
         Player player = (Player) event.getWhoClicked();
 
         if (!skinBookOpenMap.containsKey(player)) return;
+        if (event.getCurrentItem() == null) return;
+
+        if (event
+                        .getCurrentItem()
+                        .getItemMeta()
+                        .getPersistentDataContainer()
+                        .has(
+                                new NamespacedKey(SkinBookMain.getPlugin(),
+                                        "skinBook"),
+                                PersistentDataType.STRING)) {
+            event.setCancelled(true);
+            return;
+        }
         if (event.getClickedInventory() == player.getInventory()) return;
 
         if (event.getSlot() != config.getInt("menu.slots.item")) event.setCancelled(true);
@@ -29,7 +45,6 @@ public class InventoryClickListener implements Listener {
             ItemStack targetItem = event.getClickedInventory().getItem(config.getInt("menu.slots.item"));
             if (targetItem == null) {
                 player.sendMessage(config.getMessage("messages.menu.noItem"));
-                player.closeInventory();
                 return;
             }
 
@@ -37,13 +52,16 @@ public class InventoryClickListener implements Listener {
                 player.sendMessage(config.getMessage("messages.menu.wrongMaterial")
                         .replace("{material}", data.getA().name())
                         .replace("{targetMaterial}", targetItem.getType().name()));
-                player.closeInventory();
                 return;
             }
 
+            if (targetItem.getAmount() != 1) {
+                player.sendMessage(config.getMessage("messages.menu.wrongAmount"));
+                return;
+            }
 
-            skinBookOpenMap.remove(player);
             player.closeInventory();
+            player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 
             int customModelData = data.getB();
 

@@ -8,7 +8,10 @@ import net.starly.skinbook.event.InventoryClickListener;
 import net.starly.skinbook.event.InventoryCloseListener;
 import net.starly.skinbook.event.PlayerInteractListener;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
 
 @SuppressWarnings("all")
 public class SkinBookMain extends JavaPlugin {
@@ -41,6 +44,13 @@ public class SkinBookMain extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), plugin);
         Bukkit.getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
         Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), plugin);
+    }
+
+    @Override
+    public void onDisable() {
+        skinBookOpenMap.forEach((player, data) -> {
+            player.closeInventory();
+        });
     }
 
     public static JavaPlugin getPlugin() {
