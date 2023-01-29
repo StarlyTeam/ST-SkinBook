@@ -32,6 +32,7 @@ public class PlayerInteractListener implements Listener {
         Material material = Material.valueOf(pdc.get(new NamespacedKey(SkinBookMain.getPlugin(), "material"), PersistentDataType.STRING));
         int customModelData = Integer.parseInt(pdc.get(new NamespacedKey(SkinBookMain.getPlugin(), "customModelData"), PersistentDataType.STRING));
 
+        event.setCancelled(true);
         new SkinBookMenu(material, customModelData).openInventory(player);
         skinBookOpenMap.put(player ,new Tuple<>(material, customModelData));
 
