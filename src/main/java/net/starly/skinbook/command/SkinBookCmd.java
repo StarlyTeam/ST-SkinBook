@@ -112,7 +112,7 @@ public class SkinBookCmd implements CommandExecutor {
 
 
                 // GIVE SKINBOOK
-                if (new InventoryUtil().getSpace(player.getInventory()) - 5 == 0) {
+                if (InventoryUtil.getSpace(player.getInventory()) - 5 < 1) {
                     player.sendMessage(config.getMessage("messages.create.noSpaceInInventory"));
                     return true;
                 }
