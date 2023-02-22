@@ -1,6 +1,7 @@
 package net.starly.skinbook.event;
 
 import net.starly.core.data.util.Tuple;
+import net.starly.core.util.InventoryUtil;
 import net.starly.skinbook.SkinBookMain;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -8,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerEditBookEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -62,7 +62,13 @@ public class InventoryClickListener implements Listener {
             }
 
             player.closeInventory();
-            player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            if (player.getInventory().getItemInMainHand().getAmount() == 1) {
+                player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            } else {
+                player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+            }
+
+            player.sendMessage(config.getMessage("messages.menu.success"));
 
             int customModelData = data.getB();
 
@@ -70,8 +76,11 @@ public class InventoryClickListener implements Listener {
             itemMeta.setCustomModelData(customModelData);
             targetItem.setItemMeta(itemMeta);
 
-            player.sendMessage(config.getMessage("messages.menu.success"));
-            player.getInventory().addItem(targetItem);
+            if (InventoryUtil.getSpace(player.getInventory()) - 5 < 1) {
+                player.getWorld().dropItem(player.getLocation(), targetItem);
+            } else {
+                player.getInventory().addItem(targetItem);
+            }
         }
     }
 }
