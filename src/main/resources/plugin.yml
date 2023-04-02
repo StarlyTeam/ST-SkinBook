@@ -8,10 +8,10 @@ description: SkinBook Plugin.
 softdepend:
   - ST-Core
 
-version: 1.0.1
+version: 1.0.2
 api-version: 1.14
 
 commands:
-  skinbook:
+  skin-book:
     description: 스킨북 명령어.
     aliases: [ 스킨북, sb, skb ]
