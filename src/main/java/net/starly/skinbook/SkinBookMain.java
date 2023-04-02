@@ -7,13 +7,10 @@ import net.starly.skinbook.command.tabcomplete.SkinBookTab;
 import net.starly.skinbook.event.InventoryClickListener;
 import net.starly.skinbook.event.InventoryCloseListener;
 import net.starly.skinbook.event.PlayerInteractListener;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
 
-@SuppressWarnings("all")
 public class SkinBookMain extends JavaPlugin {
     private static JavaPlugin plugin;
     public static Config config;
@@ -21,10 +18,10 @@ public class SkinBookMain extends JavaPlugin {
     @Override
     public void onEnable() {
         // DEPENDENCY
-        if (Bukkit.getPluginManager().getPlugin("ST-Core") == null) {
-            Bukkit.getLogger().warning("[" + getName() + "] ST-Core 플러그인이 적용되지 않았습니다! 플러그인을 비활성화합니다.");
-            Bukkit.getLogger().warning("[" + getName() + "] 다운로드 링크 : &fhttp://starly.kr/discord");
-            Bukkit.getPluginManager().disablePlugin(this);
+        if (!isPluginEnabled("net.starly.core.StarlyCore")) {
+            getServer().getLogger().warning("[" + getName() + "] ST-Core 플러그인이 적용되지 않았습니다! 플러그인을 비활성화합니다.");
+            getServer().getLogger().warning("[" + getName() + "] 다운로드 링크 : &fhttp://starly.kr/");
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
@@ -37,13 +34,13 @@ public class SkinBookMain extends JavaPlugin {
         config.loadDefaultConfig();
 
         // COMMAND
-        Bukkit.getPluginCommand("skinbook").setExecutor(new SkinBookCmd());
-        Bukkit.getPluginCommand("skinbook").setTabCompleter(new SkinBookTab());
+        getServer().getPluginCommand("skin-book").setExecutor(new SkinBookCmd());
+        getServer().getPluginCommand("skin-book").setTabCompleter(new SkinBookTab());
 
         // EVENT
-        Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), plugin);
-        Bukkit.getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
-        Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), plugin);
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
+        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
+        getServer().getPluginManager().registerEvents(new PlayerInteractListener(), plugin);
     }
 
     @Override
@@ -55,5 +52,14 @@ public class SkinBookMain extends JavaPlugin {
 
     public static JavaPlugin getPlugin() {
         return plugin;
+    }
+
+    private boolean isPluginEnabled(String path) {
+        try {
+            Class.forName(path);
+            return true;
+        } catch (NoClassDefFoundError ignored) {
+        } catch (Exception ex) { ex.printStackTrace(); }
+        return false;
     }
 }
