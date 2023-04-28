@@ -8,7 +8,7 @@ description: SkinBook Plugin.
 softdepend:
   - ST-Core
 
-version: 1.0.2
+version: 1.0.3
 api-version: 1.14
 
 commands:
