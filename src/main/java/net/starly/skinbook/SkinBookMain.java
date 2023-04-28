@@ -20,7 +20,7 @@ public class SkinBookMain extends JavaPlugin {
         // DEPENDENCY
         if (!isPluginEnabled("net.starly.core.StarlyCore")) {
             getServer().getLogger().warning("[" + getName() + "] ST-Core 플러그인이 적용되지 않았습니다! 플러그인을 비활성화합니다.");
-            getServer().getLogger().warning("[" + getName() + "] 다운로드 링크 : &fhttp://starly.kr/");
+            getServer().getLogger().warning("[" + getName() + "] 다운로드 링크 : §fhttp://starly.kr/");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
