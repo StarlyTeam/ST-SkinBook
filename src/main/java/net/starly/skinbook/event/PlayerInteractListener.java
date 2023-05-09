@@ -1,6 +1,7 @@
 package net.starly.skinbook.event;
 
 import net.starly.core.data.util.Tuple;
+import net.starly.core.jb.util.Pair;
 import net.starly.skinbook.SkinBookMain;
 import net.starly.skinbook.gui.SkinBookMenu;
 import org.bukkit.Material;
@@ -15,7 +16,6 @@ import org.bukkit.persistence.PersistentDataType;
 
 import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
 
-@SuppressWarnings("all")
 public class PlayerInteractListener implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -34,7 +34,7 @@ public class PlayerInteractListener implements Listener {
 
         event.setCancelled(true);
         new SkinBookMenu(material, customModelData).openInventory(player);
-        skinBookOpenMap.put(player ,new Tuple<>(material, customModelData));
+        skinBookOpenMap.put(player , new Pair<>(material, customModelData));
 
         player.playSound(player.getLocation(), "minecraft:item.book.page_turn", 1, 1);
     }

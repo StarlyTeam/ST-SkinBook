@@ -1,6 +1,7 @@
 package net.starly.skinbook.event;
 
 import net.starly.core.data.util.Tuple;
+import net.starly.core.jb.util.Pair;
 import net.starly.core.util.InventoryUtil;
 import net.starly.skinbook.SkinBookMain;
 import org.bukkit.Material;
@@ -16,7 +17,6 @@ import org.bukkit.persistence.PersistentDataType;
 import static net.starly.skinbook.SkinBookMain.config;
 import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
 
-@SuppressWarnings("all")
 public class InventoryClickListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
@@ -41,7 +41,7 @@ public class InventoryClickListener implements Listener {
         if (event.getSlot() != config.getInt("menu.slots.item")) event.setCancelled(true);
 
         if (event.getSlot() == config.getInt("menu.slots.execute")) {
-            Tuple<Material, Integer> data = skinBookOpenMap.get(player);
+            Pair<Material, Integer> data = skinBookOpenMap.get(player);
 
             ItemStack targetItem = event.getClickedInventory().getItem(config.getInt("menu.slots.item"));
             if (targetItem == null) {
@@ -49,9 +49,9 @@ public class InventoryClickListener implements Listener {
                 return;
             }
 
-            if (targetItem.getType() != data.getA()) {
+            if (targetItem.getType() != data.getFirst()) {
                 player.sendMessage(config.getMessage("messages.menu.wrongMaterial")
-                        .replace("{material}", data.getA().name())
+                        .replace("{material}", data.getFirst().name())
                         .replace("{targetMaterial}", targetItem.getType().name()));
                 return;
             }
@@ -70,7 +70,7 @@ public class InventoryClickListener implements Listener {
 
             player.sendMessage(config.getMessage("messages.menu.success"));
 
-            int customModelData = data.getB();
+            int customModelData = data.getSecond();
 
             ItemMeta itemMeta = targetItem.getItemMeta();
             itemMeta.setCustomModelData(customModelData);
