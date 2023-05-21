@@ -26,10 +26,10 @@ public class PlayerInteractListener implements Listener {
 
         // CHECK PDC
         PersistentDataContainer pdc = mainHandItem.getItemMeta().getPersistentDataContainer();
-        if (!pdc.has(new NamespacedKey(SkinBookMain.getPlugin(), "material"), PersistentDataType.STRING)) return;
+        if (!pdc.has(new NamespacedKey(SkinBookMain.getInstance(), "material"), PersistentDataType.STRING)) return;
 
-        Material material = Material.valueOf(pdc.get(new NamespacedKey(SkinBookMain.getPlugin(), "material"), PersistentDataType.STRING));
-        int customModelData = Integer.parseInt(pdc.get(new NamespacedKey(SkinBookMain.getPlugin(), "customModelData"), PersistentDataType.STRING));
+        Material material = Material.valueOf(pdc.get(new NamespacedKey(SkinBookMain.getInstance(), "material"), PersistentDataType.STRING));
+        int customModelData = Integer.parseInt(pdc.get(new NamespacedKey(SkinBookMain.getInstance(), "customModelData"), PersistentDataType.STRING));
 
         event.setCancelled(true);
         new SkinBookMenu(material, customModelData).openInventory(player);

@@ -31,7 +31,7 @@ public class InventoryListener implements Listener {
                         .getItemMeta()
                         .getPersistentDataContainer()
                         .has(
-                                new NamespacedKey(SkinBookMain.getPlugin(),
+                                new NamespacedKey(SkinBookMain.getInstance(),
                                         "skinBook"),
                                 PersistentDataType.STRING)) {
             event.setCancelled(true);

@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 import static net.starly.skinbook.SkinBookMain.config;
 
 public class SkinBookCmd implements CommandExecutor {
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
         // 이런짓은 하지 말아야 했는데...
@@ -107,9 +108,9 @@ public class SkinBookCmd implements CommandExecutor {
 
                 // SET PDC
                 PersistentDataContainer pdc = itemMeta.getPersistentDataContainer();
-                pdc.set(new NamespacedKey(SkinBookMain.getPlugin(), "skinBook"), PersistentDataType.STRING, "true");
-                pdc.set(new NamespacedKey(SkinBookMain.getPlugin(), "material"), PersistentDataType.STRING, material.name());
-                pdc.set(new NamespacedKey(SkinBookMain.getPlugin(), "customModelData"), PersistentDataType.STRING, customModelData + "");
+                pdc.set(new NamespacedKey(SkinBookMain.getInstance(), "skinBook"), PersistentDataType.STRING, "true");
+                pdc.set(new NamespacedKey(SkinBookMain.getInstance(), "material"), PersistentDataType.STRING, material.name());
+                pdc.set(new NamespacedKey(SkinBookMain.getInstance(), "customModelData"), PersistentDataType.STRING, customModelData + "");
 
                 skinBook.setItemMeta(itemMeta);
 
