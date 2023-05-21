@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +20,12 @@ import java.util.stream.Collectors;
 
 import static net.starly.skinbook.SkinBookMain.config;
 
-@SuppressWarnings("all")
 public class SkinBookCmd implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+        // 이런짓은 하지 말아야 했는데...
+        // 난 그 사실을 몰랐어...
+
         if (!(sender instanceof Player)) return true;
         Player player = (Player) sender;
 
@@ -72,7 +75,7 @@ public class SkinBookCmd implements CommandExecutor {
                 }
 
 
-                // GET CUSTOMMODELDATA
+                // GET CUSTOM-MODEL-DATA
                 int customModelData;
                 try {
                     customModelData = Integer.parseInt(args[1]);
@@ -86,7 +89,7 @@ public class SkinBookCmd implements CommandExecutor {
                 }
 
 
-                // GET ITEMSTACK & REPLACE LORE
+                // GET ITEM-STACK & REPLACE LORE
                 ItemStack skinBook = config.getItemStack("skinBook");
 
                 List<String> lore = skinBook.getItemMeta().getLore();
@@ -111,7 +114,7 @@ public class SkinBookCmd implements CommandExecutor {
                 skinBook.setItemMeta(itemMeta);
 
 
-                // GIVE SKINBOOK
+                // GIVE SKIN-BOOK
                 if (InventoryUtil.getSpace(player.getInventory()) - 5 < 1) {
                     player.sendMessage(config.getMessage("messages.create.noSpaceInInventory"));
                     return true;

@@ -1,6 +1,5 @@
-package net.starly.skinbook.event;
+package net.starly.skinbook.listener;
 
-import net.starly.core.data.util.Tuple;
 import net.starly.core.jb.util.Pair;
 import net.starly.core.util.InventoryUtil;
 import net.starly.skinbook.SkinBookMain;
@@ -10,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -17,7 +17,8 @@ import org.bukkit.persistence.PersistentDataType;
 import static net.starly.skinbook.SkinBookMain.config;
 import static net.starly.skinbook.data.SkinBookOpenMap.skinBookOpenMap;
 
-public class InventoryClickListener implements Listener {
+public class InventoryListener implements Listener {
+
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -82,5 +83,12 @@ public class InventoryClickListener implements Listener {
                 player.getInventory().addItem(targetItem);
             }
         }
+    }
+
+    @EventHandler
+    public void onClose(InventoryCloseEvent event) {
+        Player player = (Player) event.getPlayer();
+
+        skinBookOpenMap.remove(player);
     }
 }

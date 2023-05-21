@@ -1,6 +1,5 @@
-package net.starly.skinbook.event;
+package net.starly.skinbook.listener;
 
-import net.starly.core.data.util.Tuple;
 import net.starly.core.jb.util.Pair;
 import net.starly.skinbook.SkinBookMain;
 import net.starly.skinbook.gui.SkinBookMenu;

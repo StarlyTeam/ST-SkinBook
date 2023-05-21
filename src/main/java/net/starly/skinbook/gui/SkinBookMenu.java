@@ -6,7 +6,8 @@ import org.bukkit.inventory.Inventory;
 
 import static net.starly.skinbook.SkinBookMain.config;
 
-@SuppressWarnings("all")
+// 이런짓은 하지 말아야 했는데...
+// 난 그 사실을 몰랐어...
 public class SkinBookMenu {
     private Material material;
     private int customModelData;
