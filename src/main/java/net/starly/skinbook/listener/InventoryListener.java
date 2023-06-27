@@ -90,7 +90,7 @@ public class InventoryListener implements Listener {
         Player player = (Player) event.getPlayer();
 
         if (skinBookOpenMap.remove(player) != null) {
-            ItemStack targetItem = event.getClickedInventory().getItem(config.getInt("menu.slots.item"));
+            ItemStack targetItem = event.getInventory().getItem(config.getInt("menu.slots.item"));
             if (targetItem == null) return;
 
             if (InventoryUtil.getSpace(player.getInventory()) - 5 < 1) {
