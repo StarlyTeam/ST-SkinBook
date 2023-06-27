@@ -89,6 +89,15 @@ public class InventoryListener implements Listener {
     public void onClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
 
-        skinBookOpenMap.remove(player);
+        if (skinBookOpenMap.remove(player) != null) {
+            ItemStack targetItem = event.getClickedInventory().getItem(config.getInt("menu.slots.item"));
+            if (targetItem == null) return;
+
+            if (InventoryUtil.getSpace(player.getInventory()) - 5 < 1) {
+                player.getWorld().dropItem(player.getLocation(), targetItem);
+            } else {
+                player.getInventory().addItem(targetItem);
+            }
+        }
     }
 }
