@@ -9,7 +9,7 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url = "http://feather-s.kr:8083/repository/maven-public/"
+        url = "http://starly.kr:8083/repository/maven-public/"
         allowInsecureProtocol = true
     }
 }
@@ -17,8 +17,8 @@ repositories {
 dependencies {
     //JAVA DEPENDENCIES
     compileOnly "org.jetbrains:annotations:23.0.0"
-    compileOnly "org.projectlombok:lombok:1.18.24"
-    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    compileOnly "org.projectlombok:lombok:1.18.26"
+    annotationProcessor "org.projectlombok:lombok:1.18.26"
 
     //BUKKIT DEPENDENCIES
     compileOnly "org.spigotmc:spigot-api:R0.1:1.14.4"
@@ -27,6 +27,6 @@ dependencies {
     compileOnly "net.starly.core:ST-Core:1.8.1"
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
